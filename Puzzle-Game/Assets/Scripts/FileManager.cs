@@ -4,20 +4,27 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class FileManager : MonoBehaviour
 {
     string path;
     public RawImage image;
 
     public GameObject DialogWindow;
+    public GameObject PlayerNameWindow;
     public InputField _url;
     public GameObject urlPanel;
+
+
+
     public void OpenFileExplorer()
     {
         path = EditorUtility.OpenFilePanel("Show all images (.png)", "", "png");
         StartCoroutine(GetTexture());
 
         DialogWindow.gameObject.SetActive(false);
+        PlayerNameWindow.gameObject.SetActive(true);
+
 
 
     }
@@ -44,7 +51,7 @@ public class FileManager : MonoBehaviour
         StartCoroutine(GetImageFromWeb(_url.text));
         urlPanel.gameObject.SetActive(false);
 
-
+        PlayerNameWindow?.SetActive(true);
 
     }
 
@@ -72,8 +79,20 @@ public class FileManager : MonoBehaviour
 
 
 
+    public void QuitGame()
+    {
+         Application.Quit();
+    }
 
-
-
+    public void ReturnMenu()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
 
 }
+
+
+
+
+
+
