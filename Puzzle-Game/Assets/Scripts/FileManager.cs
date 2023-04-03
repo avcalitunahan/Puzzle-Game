@@ -15,7 +15,8 @@ public class FileManager : MonoBehaviour
     public InputField _url;
     public GameObject urlPanel;
 
-
+    public Text obj_text;
+    public InputField display;
 
     public void OpenFileExplorer()
     {
@@ -88,6 +89,13 @@ public class FileManager : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void StoreName()
+    {
+        obj_text.text ="PLAYER: "+ display.text;
+    }
+
+
 
 }
 
