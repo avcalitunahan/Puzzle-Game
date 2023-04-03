@@ -897,6 +897,8 @@ MonoBehaviour:
   PlayerNameWindow: {fileID: 817985373}
   m_puzzleSelection: {fileID: 0}
   m_randomPasses: 12
+  m_random2: 66
+  mixButton: {fileID: 1234866142}
 --- !u!1 &596392548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,7 +2877,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 592014736}
         m_TargetAssemblyTypeName: GameBoard, Assembly-CSharp
-        m_MethodName: RandomizePlacement
+        m_MethodName: ButtonPassive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GameBoard : MonoBehaviour
 {
     public int m_size;
@@ -10,7 +10,9 @@ public class GameBoard : MonoBehaviour
 
     public PuzzleSection[,] m_puzzle;
     public PuzzleSection m_puzzleSelection;
-    public int m_randomPasses = 12;
+    public int m_randomPasses = 20;
+    public int m_random2 = 66;
+    public Button mixButton;
 
     public void Create()
     {
@@ -115,6 +117,51 @@ public class GameBoard : MonoBehaviour
 
 
     }
+
+    public void ButtonPassive()
+    {
+        VectorInt2[] puzzleLocation = new VectorInt2[2];
+        Vector2[] puzzleOffset = new Vector2[2];
+        do
+        {
+            for (int i = 0; i < m_random2; i++)
+            {
+                puzzleLocation[0].x = Random.Range(0, m_size);
+                puzzleLocation[0].y = Random.Range(0, m_size);
+                puzzleLocation[1].x = Random.Range(0, m_size);
+                puzzleLocation[1].y = Random.Range(0, m_size);
+
+                puzzleOffset[0] = m_puzzle[puzzleLocation[0].x, puzzleLocation[0].y].GetImageOffset();
+                puzzleOffset[1] = m_puzzle[puzzleLocation[1].x, puzzleLocation[1].y].GetImageOffset();
+
+                m_puzzle[puzzleLocation[0].x, puzzleLocation[0].y].AssignImage(puzzleOffset[1]);
+                m_puzzle[puzzleLocation[1].x, puzzleLocation[1].y].AssignImage(puzzleOffset[0]);
+            }
+
+        } while (CheckBoard() == true);
+
+
+        for (int i = 0; i < m_size; i++)
+        {
+            for (int j = 0; j < m_size; j++)
+            {
+                if (m_puzzle[i, j].CheckGoodPlacement() == true)
+                {
+                    mixButton.interactable = false;
+                    mixButton.GetComponent<Image>().color = Color.red;
+
+                }
+                else
+                {
+
+                }
+
+            }
+
+        }
+
+    }
+
 }
 
 
