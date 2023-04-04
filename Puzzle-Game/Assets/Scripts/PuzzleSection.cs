@@ -27,7 +27,7 @@ public class PuzzleSection : MonoBehaviour
                                 1.0f * transform.localScale.z / size, 1);
     }
 
-    //
+  
     public void AssignImage(Vector2 scale, Vector2 offset)
     {
         m_goodOffset = offset;

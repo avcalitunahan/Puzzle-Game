@@ -21,18 +21,20 @@ public class GameBoard : MonoBehaviour
 
         GameObject temp;
         m_puzzle = new PuzzleSection[m_size, m_size];
+        RectTransform rectTransform = m_puzzlePiece.GetComponent<RectTransform>();
+        rectTransform.sizeDelta = new Vector2(200, 200);
 
         for (int i = 0; i < m_size; i++)
         {
             for (int j = 0; j < m_size; j++)
             {
-                temp = (GameObject)Instantiate(m_puzzlePiece,
-                                 new Vector2((i * 900 / m_size), j * 900 / m_size), Quaternion.identity);
+                temp = (GameObject)Instantiate(m_puzzlePiece, new Vector2((i * 400 / m_size), j *  400/ m_size), Quaternion.identity);
                 temp.transform.SetParent(transform);
-
-                m_puzzle[i, j] = (PuzzleSection)temp.GetComponent<PuzzleSection>();
+                m_puzzle[i, j] = temp.GetComponent<PuzzleSection>();
                 m_puzzle[i, j].CreatePuzzlePiece(m_size);
-
+                m_puzzle[i, j].transform.localScale =  new Vector3(1.0f, 1.0f, 1.0f);
+              
+                
             }
         }
 
