@@ -26,7 +26,7 @@ public class GameBoard : MonoBehaviour
         {
             for (int j = 0; j < m_size; j++)
             {
-                temp = (GameObject)Instantiate(m_puzzlePiece, new Vector2((i * 400 / m_size), j *  400/ m_size), Quaternion.identity);
+                temp = (GameObject)Instantiate(m_puzzlePiece, new Vector2((i * 900 / m_size), j *  900/ m_size), Quaternion.identity);
                 temp.transform.SetParent(transform);
                 m_puzzle[i, j] = temp.GetComponent<PuzzleSection>();
                 m_puzzle[i, j].CreatePuzzlePiece(m_size);
