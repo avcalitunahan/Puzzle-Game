@@ -21,8 +21,6 @@ public class GameBoard : MonoBehaviour
 
         GameObject temp;
         m_puzzle = new PuzzleSection[m_size, m_size];
-        RectTransform rectTransform = m_puzzlePiece.GetComponent<RectTransform>();
-        rectTransform.sizeDelta = new Vector2(200, 200);
 
         for (int i = 0; i < m_size; i++)
         {
@@ -32,7 +30,6 @@ public class GameBoard : MonoBehaviour
                 temp.transform.SetParent(transform);
                 m_puzzle[i, j] = temp.GetComponent<PuzzleSection>();
                 m_puzzle[i, j].CreatePuzzlePiece(m_size);
-                m_puzzle[i, j].transform.localScale =  new Vector3(1.0f, 1.0f, 1.0f);
               
                 
             }
