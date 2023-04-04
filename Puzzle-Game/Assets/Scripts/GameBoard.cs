@@ -14,6 +14,8 @@ public class GameBoard : MonoBehaviour
     public int m_random2 = 66;
     public Button mixButton;
 
+    public int moves=0;
+    public Text movesvalue;
     public void Create()
     {
 
@@ -44,7 +46,11 @@ public class GameBoard : MonoBehaviour
     }
 
     public void RandomizePlacement()
+
     {
+        movesvalue.text = "MOVES:" + moves;
+
+
         VectorInt2[] puzzleLocation = new VectorInt2[2];
         Vector2[] puzzleOffset = new Vector2[2];
         do
@@ -93,6 +99,13 @@ public class GameBoard : MonoBehaviour
     public void SetSelection(PuzzleSection selection)
     {
         m_puzzleSelection = selection;
+        moves++;
+
+        if (moves % 2 == 0)
+        {
+
+            movesvalue.text = "MOVES:" + moves / 2;
+        }
     }
 
     public bool CheckBoard()
