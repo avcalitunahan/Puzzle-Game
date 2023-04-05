@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+
 public class GameBoard : MonoBehaviour
 {
     public int m_size;
@@ -13,11 +15,22 @@ public class GameBoard : MonoBehaviour
     public int m_randomPasses = 20;
     public int m_random2 = 66;
     public Button mixButton;
-
-    public int moves=0;
+    public int moves;
     public Text movesvalue;
+    private string path;
+
+    public Text obj_text;
+    public InputField display;
+    public Text score_text;
+    public int score;
+    public Text record;
+
+    public GameObject scorepanel;
+
+
     public void Create()
     {
+
 
 
 
@@ -28,12 +41,13 @@ public class GameBoard : MonoBehaviour
         {
             for (int j = 0; j < m_size; j++)
             {
-                temp = (GameObject)Instantiate(m_puzzlePiece, new Vector2((i * 900 / m_size), j *  900/ m_size), Quaternion.identity);
+                temp = (GameObject)Instantiate(m_puzzlePiece,
+                                 new Vector2((i * 900 / m_size), j * 900 / m_size), Quaternion.identity);
                 temp.transform.SetParent(transform);
-                m_puzzle[i, j] = temp.GetComponent<PuzzleSection>();
+
+                m_puzzle[i, j] = (PuzzleSection)temp.GetComponent<PuzzleSection>();
                 m_puzzle[i, j].CreatePuzzlePiece(m_size);
-              
-                
+
             }
         }
 
@@ -46,11 +60,9 @@ public class GameBoard : MonoBehaviour
     }
 
     public void RandomizePlacement()
-
     {
         movesvalue.text = "MOVES:" + moves;
-
-
+        score_text.text = "SCORE:" + score;
         VectorInt2[] puzzleLocation = new VectorInt2[2];
         Vector2[] puzzleOffset = new Vector2[2];
         do
@@ -103,9 +115,12 @@ public class GameBoard : MonoBehaviour
 
         if (moves % 2 == 0)
         {
-
             movesvalue.text = "MOVES:" + moves / 2;
         }
+
+
+
+
     }
 
     public bool CheckBoard()
@@ -115,7 +130,15 @@ public class GameBoard : MonoBehaviour
             for (int j = 0; j < m_size; j++)
             {
                 if (m_puzzle[i, j].CheckGoodPlacement() == false)
+                {
                     return false;
+
+                }
+                else if (m_puzzle[i, j].CheckGoodPlacement() == true)
+                {
+
+                }
+
             }
 
         }
@@ -129,7 +152,10 @@ public class GameBoard : MonoBehaviour
 
 
     }
-
+    public void StoreName()
+    {
+        obj_text.text = "PLAYER:" + display.text;
+    }
     public void ButtonPassive()
     {
         VectorInt2[] puzzleLocation = new VectorInt2[2];
@@ -174,10 +200,42 @@ public class GameBoard : MonoBehaviour
 
     }
 
+    public void Save()
+    {
+        string path = Application.dataPath + "/enyuksekscore.txt";
+        StreamWriter writer = new StreamWriter(path, true);
+        string metin = movesvalue.text;
+        string name = obj_text.text;
+        score_text.text = "SCORE:"+score.ToString();
+        
+        writer.Write(name);
+        writer.Write("    " + metin);
+        writer.WriteLine("  " + score_text.text);
+        writer.Close();
+
+
+    }
+    public void Scores()
+    {
+
+        string path = Application.dataPath + "/enyuksekscore.txt";
+        StreamReader reader = new StreamReader(path);
+
+
+        string content = reader.ReadToEnd();
+
+        record.text = content;
+
+
+        reader.Close();
+        scorepanel.SetActive(true);
+    }
+    public void ScorePanel()
+    {
+        scorepanel.SetActive(false);
+    }
+
 }
-
-
-
 
 
 
