@@ -221,7 +221,6 @@ public class GameBoard : MonoBehaviour
 
         record.text = content;
 
-
         reader.Close();
         scorepanel.SetActive(true);
     }
@@ -231,6 +230,11 @@ public class GameBoard : MonoBehaviour
     }
 
 }
+
+        
+    
+    
+
 
 
 
