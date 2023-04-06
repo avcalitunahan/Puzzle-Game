@@ -52,8 +52,24 @@ public class PuzzleSection : MonoBehaviour
         {
             previousSelection.GetComponent<RawImage>().color = Color.white;
             Vector2 tempOffset = previousSelection.GetImageOffset();
-            previousSelection.AssignImage(m_offset);
-            AssignImage(tempOffset);
+            if (previousSelection.m_offset != previousSelection.m_goodOffset)
+            {
+                previousSelection.AssignImage(m_offset);
+                AssignImage(tempOffset);
+                m_gameBoard.moves++;
+                m_gameBoard.movesvalue.text = "MOVES:" + m_gameBoard.moves;
+                if(tempOffset == m_goodOffset)
+                {
+                    m_gameBoard.score += 5;
+                    m_gameBoard.score_text.text = "SCORE:" + m_gameBoard.score.ToString();
+                }
+                else
+                {
+                    m_gameBoard.score -= 10 ;
+                    m_gameBoard.score_text.text = "SCORE:" + m_gameBoard.score.ToString() ;
+                }
+                
+            }
             m_gameBoard.SetSelection(null);
             if (m_gameBoard.CheckBoard() == true)
                 m_gameBoard.Win();
