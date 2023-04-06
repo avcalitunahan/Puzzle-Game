@@ -20,7 +20,9 @@
 
 3.3. Ayarlar!
 
-[settings](https://user-images.githubusercontent.com/74769154/230506625-9bee6476-77f8-4754-abab-af0f81b80a08.png)
+![settings](https://user-images.githubusercontent.com/74769154/230506883-a4907599-a213-4f8b-bf39-95121bbb220b.png)
+
+
 
 3.4. Puan Tablosu
 
