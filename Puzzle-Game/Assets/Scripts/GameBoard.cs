@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GameBoard : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class GameBoard : MonoBehaviour
 
     public GameObject scorepanel;
 
+
+    public Text nametext;
+    public Text movetext;
+    public Text scoretext;
+    public GameObject Gamepanel;
 
     public void Create()
     {
@@ -144,7 +150,7 @@ public class GameBoard : MonoBehaviour
     public void Win()
     {
         Debug.Log("YOU WIN!");
-
+        GamePanel();
 
     }
     public void StoreName()
@@ -227,6 +233,20 @@ public class GameBoard : MonoBehaviour
     public void ScorePanel()
     {
         scorepanel.SetActive(false);
+    }
+
+
+    public void GamePanel()
+    {
+        Gamepanel.SetActive(true);
+        nametext.text =obj_text.text;
+        movetext.text=movesvalue.text;
+        scoretext.text = "SCORE:" + score;
+    }
+
+    public void SceneLoad()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 
 }
