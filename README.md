@@ -37,3 +37,8 @@
 3.6 Kullanıcı Adı 
 
 ![name](https://user-images.githubusercontent.com/74769154/230506729-5c759933-b41b-4a67-bf19-96af52fb7f16.png)
+
+
+4. Projenin Çalıştırılması
+
+İndirilen zip dosyasından çıkan klasörün  unity hub da lokasyonu belirtilerek unity editörde açılıp çalıtırılması
