@@ -41,4 +41,4 @@
 
 4. Projenin Çalıştırılması
 
-İndirilen zip dosyasından çıkan klasörün  unity hub da lokasyonu belirtilerek unity editörde açılıp çalıtırılması
+İndirilen zip dosyasından çıkan klasörün  unity hub da lokasyonu belirtilerek unity editörde açılıp çalıştırılması
